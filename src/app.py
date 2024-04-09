@@ -1,4 +1,5 @@
 from flask import Flask,jsonify
+from flask import request
 
 
 todos = [
@@ -17,7 +18,11 @@ def hello_world():
     json_text = jsonify(todos)
     return json_text
 
-
+@app.route('/todos', methods=['POST'])
+def add_new_todo():
+    request_body = request.json
+    print("Incoming request with the following body", request_body)
+    return 'Response for the POST todo'
 
 
 
