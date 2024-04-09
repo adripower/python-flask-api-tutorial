@@ -20,7 +20,7 @@ def hello_world():
 
 @app.route('/todos', methods=['POST'])
 def add_new_todo():
-    request_body = request.json
+    request_body = request.get_json(force=True) 
     print("Incoming request with the following body", request_body)
     return 'Response for the POST todo'
 
